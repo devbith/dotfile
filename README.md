@@ -12,6 +12,7 @@ $ export dotfile_path="$(pwd)"
 
 ## Install zsh shell and make it a defautl zshell
 
-### Reference the `.zshenv` configuration
+
+## Reference the `.zshenv` configuration
 
 ln -s $dotfile_path/.zshenv $HOME/.zshenv;
