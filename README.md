@@ -1,4 +1,3 @@
-# dotfile
 
 ### 1. Clone the repo to desire location:
 
