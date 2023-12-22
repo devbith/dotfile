@@ -1,5 +1,5 @@
 
-### 1. Clone the repo to desire location:
+### 1. Clone the repo to desire path
 
 Checkout cloned repo
 ```
