@@ -1,6 +1,6 @@
 # dotfile
 
-### Clone the repo to desire location:
+### 1. Clone the repo to desire location:
 
 Checkout cloned repo
 ```
@@ -13,16 +13,22 @@ Create a temporary environment variable `dotfile_path` pointing to cloned reposi
 $ export dotfile_path="$(pwd)"
 ```
 
-## Install zsh shell and make it a defautl zshell
+## 2. Install zsh shell and make it a default
+- Install zsh
+- Make it default
+```
+$ chsh -s $(which zsh
+```
 
+> Note: May be restart or logout is needed after making it default
 
-## Reference dotfile `.zshenv` configuration
+## 3. Reference dotfile `.zshenv` configuration
 
 ```
 $ rm $HOME/.zshenv;ln -s $dotfile_path/.zshenv $HOME/.zshenv;
 ```
 
-## Install oh-my-zsh
+## 4. Install oh-my-zsh
 
 After installing oh-my-zsh:
 
@@ -30,3 +36,6 @@ Delete and replace .zshrc created by oh-my-zsh
 ```
 $ rm $XDG_CONFIG_HOME/zsh/.zshrc; ln -s $dotfile_path/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc;
 ```
+
+## 5. Install Neovim
+
