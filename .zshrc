@@ -1,10 +1,7 @@
-# Path to your oh-my-zsh installation.
 export ZSH="$ZDOTDIR/ohmyzsh"
 
+# oh-my-zsh theme
 ZSH_THEME="robbyrussell"
-
-# Set list of themes to pick from when loading at random
-# HIST_STAMPS="mm/dd/yyyy"
 
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
@@ -39,3 +36,18 @@ zle-line-init () {
   printf "\033[6 q"
 }
 zle -N zle-line-init
+
+
+# ------------------------------------------------ Fuzzy finder config 
+function f() {
+  f_result=$(fzf --height 70% --layout=reverse --border --preview 'bat --color=always {}')
+  if [ $? -eq 0 ]; then
+    vim $f_result
+  fi
+}
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
+bindkey "^A" fzf-history-widget
+
+
+[[ -s "$ZDOTDIR/.zsh_profile" ]] && source "$ZDOTDIR/.zsh_profile" ]]
