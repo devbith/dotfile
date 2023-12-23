@@ -27,6 +27,14 @@ rm $HOME/.zshenv;ln -s $dotfile_path/.zshenv $HOME/.zshenv;
 
 ### 4. Install Fuzzy finder, fd-find and Bat
 
+- After installing the above tool, map fzf key binding. Source the corresponding file for your shell. 
+
+For example, In Linux the binding can in, `/usr/share/fzf/shell/key-bindings.zsh`
+
+```
+echo "source /usr/share/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/zsh/.zsh_profile
+```
+
 In Fedora:
 ```
 sudo dnf -y install fd-find bat
@@ -39,7 +47,7 @@ Delete and replace .zshrc created by oh-my-zsh
 ```
 rm $XDG_CONFIG_HOME/zsh/.zshrc; ln -s $dotfile_path/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc;
 ```
-
+cd .c
 ### 6. Install Neovim 
 - Install Neovim
 - Reference `init.vim` neovim config
