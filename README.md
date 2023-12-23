@@ -1,7 +1,7 @@
 
-### Clone the repo to desire path & get started
+## Clone the repo to desire path & get started
 
-### 1. Create temporary environment variable `dotfile_path` pointing to cloned repository
+#### 1. Create temporary environment variable `dotfile_path` pointing to cloned repository
 
 - Go to cloned repository path 
 - Create temporary environemnt vraible
@@ -9,7 +9,7 @@
 export dotfile_path="$(pwd)"
 ```
 
-### 2. Install zsh shell and make it a default
+#### 2. Install zsh shell and make it a default
 - Install zsh
 - Make it default
 ```
@@ -18,14 +18,14 @@ chsh -s $(which zsh
 
 > Note: May be restart or logout is needed after making it default. After restart repeat `step 1`
 
-### 3. Reference dotfile `.zshenv` configuration 
+#### 3. Reference dotfile `.zshenv` configuration 
 
 ```
 rm $HOME/.zshenv;ln -s $dotfile_path/.zshenv $HOME/.zshenv;
 ```
 > Note: Restart the terminal and repeat `step 1`
 
-### 4. Install Fuzzy finder, fd-find and Bat
+#### 4. Install Fuzzy finder, fd-find and Bat
 
 - After installing the above tool, map fzf key binding. Source the corresponding file for your shell. 
 
@@ -39,7 +39,7 @@ In Fedora:
 ```
 sudo dnf -y install fd-find bat
 ```
-### 5. Install oh-my-zsh
+#### 5. Install oh-my-zsh
 
 After installing oh-my-zsh:
 
@@ -48,7 +48,7 @@ Delete and replace .zshrc created by oh-my-zsh
 rm $XDG_CONFIG_HOME/zsh/.zshrc; ln -s $dotfile_path/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc;
 ```
 cd .c
-### 6. Install Neovim 
+#### 6. Install Neovim 
 - Install Neovim
 - Reference `init.vim` neovim config
 ```
