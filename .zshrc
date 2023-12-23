@@ -11,9 +11,15 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Prompt customization
+# ----------------------------------------------------------------------- Prompt customization
 PROMPT='%{$fg[white]%}%~%{$reset_color%}$(git_prompt_info)'
 PROMPT+=" %(?:%{$fg_bold[green]%}$ :%{$fg_bold[red]%}$ )%{$reset_color%}"
+
+# -------------------------------------------------------------- Git settings
+ZSH_THEME_GIT_PROMPT_PREFIX=" ${FG[075]}(${FG[078]}"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+ZSH_THEME_GIT_PROMPT_DIRTY="${FG[214]}*%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="${FG[075]})%{$reset_color%}"
 
 # ------------------------------------------------ Vim mode terminal (GNU ReadLine Editor) & Cursor Config
 bindkey -v
