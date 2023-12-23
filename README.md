@@ -25,8 +25,12 @@ rm $HOME/.zshenv;ln -s $dotfile_path/.zshenv $HOME/.zshenv;
 ```
 > Note: Restart the terminal and repeat `step 1`
 
-### 4. Install Fuzzy finder
+### 4. Install Fuzzy finder and Bat
 
+Example: Fedora
+```
+sudo dnf install fzf; sudo dnf install bat;
+```
 ### 5. Install oh-my-zsh
 
 After installing oh-my-zsh:
