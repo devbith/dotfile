@@ -27,7 +27,7 @@ rm $HOME/.zshenv;ln -s $dotfile_path/.zshenv $HOME/.zshenv;
 
 ### 4. Install Fuzzy finder and Bat
 
-Example: Fedora
+In Fedora:
 ```
 sudo dnf install fzf; sudo dnf install bat;
 ```
