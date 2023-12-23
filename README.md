@@ -25,7 +25,9 @@ rm $HOME/.zshenv;ln -s $dotfile_path/.zshenv $HOME/.zshenv;
 ```
 > Note: Restart the terminal and repeat `step 1`
 
-### 4. Install oh-my-zsh
+### 4. Install Fuzzy finder
+
+### 5. Install oh-my-zsh
 
 After installing oh-my-zsh:
 
@@ -34,7 +36,7 @@ Delete and replace .zshrc created by oh-my-zsh
 rm $XDG_CONFIG_HOME/zsh/.zshrc; ln -s $dotfile_path/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc;
 ```
 
-### 5. Install Neovim 
+### 6. Install Neovim 
 - Install Neovim
 - Reference `init.vim` neovim config
 ```
@@ -47,5 +49,5 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 ```
 - Open Neovim and install plugin with `:PluginInstall`
 
-## 6. Install Fuzzy finder
+
 
