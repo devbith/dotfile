@@ -38,3 +38,11 @@ $ rm $XDG_CONFIG_HOME/zsh/.zshrc; ln -s $dotfile_path/.zshrc $XDG_CONFIG_HOME/zs
 
 ## 5. Install Neovim
 
+- Install Vim-Plug neovim plugin manager
+```
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+```
+
+## 6. Install Fuzzy finder
+
