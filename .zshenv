@@ -9,7 +9,7 @@ export ZDOTDIR="$HOME/.config/zsh"
 # ---------------------------------------------- Zsh history config
 export HISTSIZE=100000
 export HISTFILESIZE=200000
-export HISTFILE="$HOME/.zsh_history"
+export HISTFILE="$ZDOTDIR/.zsh_history"
 export HISTTIMEFORMAT="[%F %T] "
 
 # ------------------------------------------------ Neovim config and alias
