@@ -18,11 +18,12 @@ $ chsh -s $(which zsh
 
 > Note: May be restart or logout is needed after making it default. After restart repeat `step 1`
 
-### 3. Reference dotfile `.zshenv` configuration
+### 3. Reference dotfile `.zshenv` configuration 
 
 ```
 $ rm $HOME/.zshenv;ln -s $dotfile_path/.zshenv $HOME/.zshenv;
 ```
+> Note: Restart the terminal and repeat `step 1`
 
 ### 4. Install oh-my-zsh
 
