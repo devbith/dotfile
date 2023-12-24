@@ -28,7 +28,7 @@ rm $HOME/.zshenv;ln -s $dotfile_path/.zshenv $HOME/.zshenv;
 #### 4. Install 
 - Fuzzy finder, fd-find and Bat and oh-my-zsh
 ```
-sudo dnf -y install fd-find bat; sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh;
+sudo dnf -y install fd-find bat; sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 - Delete and replace .zshrc created by oh-my-zsh 
