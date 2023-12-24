@@ -38,7 +38,7 @@ rm $XDG_CONFIG_HOME/zsh/.zshrc; ln -s $dotfile_path/.zshrc $XDG_CONFIG_HOME/zsh/
 
 - Map fzf key binding. Source the corresponding file for your shell. 
 
-For example, In Linux the binding can in, `/usr/share/fzf/shell/key-bindings.zsh`
+  Example, In Linux the binding can in, `/usr/share/fzf/shell/key-bindings.zsh`
 
 ```
 echo "source /usr/share/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/zsh/.zsh_profile
