@@ -13,7 +13,7 @@ export dotfile_path="$(pwd)"
 - Install zsh
 - Make it default
 ```
-chsh -s $(which zsh
+chsh -s $(which zsh)
 ```
 
 > Note: May be restart or logout is needed after making it default. After restart repeat `step 1`
