@@ -27,6 +27,11 @@ rm $HOME/.zshenv;ln -s $dotfile_path/.zshenv $HOME/.zshenv;
 
 #### 4. Install Fuzzy finder, fd-find and Bat
 
+In Fedora destro:
+```
+sudo dnf -y install fd-find bat
+```
+
 - After installing the above tool, map fzf key binding. Source the corresponding file for your shell. 
 
 For example, In Linux the binding can in, `/usr/share/fzf/shell/key-bindings.zsh`
@@ -35,10 +40,7 @@ For example, In Linux the binding can in, `/usr/share/fzf/shell/key-bindings.zsh
 echo "source /usr/share/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/zsh/.zsh_profile
 ```
 
-In Fedora:
-```
-sudo dnf -y install fd-find bat
-```
+
 #### 5. Install oh-my-zsh
 
 After installing oh-my-zsh:
