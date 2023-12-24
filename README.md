@@ -25,14 +25,18 @@ rm $HOME/.zshenv;ln -s $dotfile_path/.zshenv $HOME/.zshenv;
 ```
 > Note: Restart the terminal and repeat `step 1`
 
-#### 4. Install Fuzzy finder, fd-find and Bat
-
-In Fedora destro:
+#### 4. Install 
+- Fuzzy finder, fd-find and Bat and oh-my-zsh
 ```
-sudo dnf -y install fd-find bat
+sudo dnf -y install fd-find bat; sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh;
 ```
 
-- After installing the above tool, map fzf key binding. Source the corresponding file for your shell. 
+- Delete and replace .zshrc created by oh-my-zsh 
+```
+rm $XDG_CONFIG_HOME/zsh/.zshrc; ln -s $dotfile_path/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc;
+```
+
+- Map fzf key binding. Source the corresponding file for your shell. 
 
 For example, In Linux the binding can in, `/usr/share/fzf/shell/key-bindings.zsh`
 
@@ -41,15 +45,6 @@ echo "source /usr/share/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/zsh/.zsh
 ```
 
 
-#### 5. Install oh-my-zsh
-
-After installing oh-my-zsh:
-
-Delete and replace .zshrc created by oh-my-zsh 
-```
-rm $XDG_CONFIG_HOME/zsh/.zshrc; ln -s $dotfile_path/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc;
-```
-cd .c
 #### 6. Install Neovim 
 - Install Neovim
 - Reference `init.vim` neovim config
