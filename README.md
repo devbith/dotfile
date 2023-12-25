@@ -81,6 +81,10 @@ rm $HOME/.tmux.conf; rm -rf $XDG_CONFIG_HOME/tmux; mkdir -p $XDG_CONFIG_HOME/tmu
 #### Other
 
 #### Install <a href="https://sdkman.io/install"> SDKMAN </a>
+```
+export SDKMAN_DIR="$XDG_DATA_HOME/sdkman" && curl -s "https://get.sdkman.io" | bash; echo 'export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"' >> $XDG_CONFIG_HOME/zsh/.zsh_profile
+```
+
 
 #### Install `ruby`
 - Follow the last instruction put the system variable in  `~/.zsh_profile`
