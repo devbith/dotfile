@@ -49,10 +49,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 bindkey "^A" fzf-history-widget
 
-
-[[ -s "$ZDOTDIR/.zsh_profile" ]] && source "$ZDOTDIR/.zsh_profile" ]]
-
-
 # ------------------------------------------------------------------ Editor alias 
 alias vim="nvim"
 alias v="nvim"
@@ -74,3 +70,6 @@ alias gs='git status'
 alias slog="git log --graph --pretty=format:'%C(auto) %h %cr -%d %s %C(cyan)<%an>' --abbrev-commit -n 15"
 alias main="git_checkout_main"
 
+# --------------------------------------------------------- Edit inline command in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
