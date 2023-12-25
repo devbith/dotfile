@@ -78,3 +78,18 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 rm $HOME/.tmux.conf; rm -rf $XDG_CONFIG_HOME/tmux; mkdir -p $XDG_CONFIG_HOME/tmux/; ln -s $dotfile_path/tmux.conf $XDG_CONFIG_HOME/tmux/tmux.conf;
 ```
 
+#### Other
+
+#### Install <a href="https://sdkman.io/install"> SDKMAN </a>
+
+#### Install `ruby`
+- Follow the last instruction put the system variable in  `~/.zsh_profile`
+ 
+#### Install `glow`
+ https://github.com/charmbracelet/glow
+
+#### Install `slides`
+ https://github.com/maaslalani/slides
+
+#### Install `zsh-syntax-highlighting `
+ https://formulae.brew.sh/formula/zsh-syntax-highlighting
