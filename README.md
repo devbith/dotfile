@@ -16,7 +16,7 @@ export dotfile_path="$(pwd)"
 chsh -s $(which zsh)
 ```
 
-> Note: May be restart or logout is needed after making it default. After restart repeat `step 1`
+> Note: Restart or logout if needed after making it default. After restart repeat `step 1`
 
 #### 3. Reference dotfile `.zshenv` configuration 
 
@@ -25,8 +25,10 @@ rm $HOME/.zshenv;ln -s $dotfile_path/.zshenv $HOME/.zshenv;
 ```
 > Note: Restart the terminal and repeat `step 1`
 
-#### 4. Install 
-- Install fuzzy finder, fd-find, bat, git-delta and tmux
+#### 4. Install utility tools 
+> For mac os install `brew` package manger first
+
+- Install fuzzy finder, fd-find, bat, git-delta and tmux 
 ```
 sudo dnf -y install fd-find bat git-delta; 
 ```
@@ -35,19 +37,19 @@ sudo dnf -y install fd-find bat git-delta;
 ```
 rm $XDG_CONFIG_HOME/zsh/.zshrc; ln -s $dotfile_path/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc;
 ```
-- Copy `.zsh_profile` from home path and move to `$XDG_CONFIG_HOME/zsh/`
+- Copy `.zshprofile` from home path and move to `$XDG_CONFIG_HOME/zsh/`
 ```
-cp $HOME/.zsh_profile $XDG_CONFIG_HOME/zsh/
+cp $HOME/.zshprofile $XDG_CONFIG_HOME/zsh/
 ```
 - Map fzf key binding. Source the corresponding file for your shell. 
 
  In Linux:
 ```
-echo "source /usr/share/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/zsh/.zsh_profile
+echo "source /usr/share/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/zsh/.zshprofile
 ```
   In Mac:
 ```
-echo "source /opt/homebrew/opt/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/zsh/.zsh_profile
+echo "source /opt/homebrew/opt/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/zsh/.zshprofile
 ```
 
 - Configure git config folder and link config file;
@@ -55,7 +57,18 @@ echo "source /opt/homebrew/opt/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/z
 rm $HOME/.gitconfig; rm $HOME/.gitignore; rm -rf $XDG_CONFIG_HOME/git; mkdir -p $XDG_CONFIG_HOME/git;ln -s $dotfile_path/config $XDG_CONFIG_HOME/git/config;ln -s $dotfile_path/ignore $XDG_CONFIG_HOME/git/ignore;
 ```
 
+- Optional: For mac, add the zsh-completion
+https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+Add the following in .zshprofile
+```
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
+  autoload -Uz compinit
+  compinit
+f
+```
 
 #### 6. Install Neovim 
 - Install Neovim
@@ -82,12 +95,12 @@ rm $HOME/.tmux.conf; rm -rf $XDG_CONFIG_HOME/tmux; mkdir -p $XDG_CONFIG_HOME/tmu
 
 #### Install <a href="https://sdkman.io/install"> SDKMAN </a>
 ```
-export SDKMAN_DIR="$XDG_DATA_HOME/sdkman" && curl -s "https://get.sdkman.io" | bash; echo 'export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"' >> $XDG_CONFIG_HOME/zsh/.zsh_profile
+export SDKMAN_DIR="$XDG_DATA_HOME/sdkman" && curl -s "https://get.sdkman.io" | bash; echo 'export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"' >> $XDG_CONFIG_HOME/zsh/.zshprofile
 ```
 
 
 #### Install `ruby`
-- Follow the last instruction put the system variable in  `~/.zsh_profile`
+- Follow the last instruction put the system variable in  `~/.zshprofile`
  
 #### Install `glow`
  https://github.com/charmbracelet/glow
