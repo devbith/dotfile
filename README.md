@@ -36,7 +36,9 @@ sudo dnf -y install fd-find bat git-delta;
 rm $XDG_CONFIG_HOME/zsh/.zshrc; ln -s $dotfile_path/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc;
 ```
 - Copy `.zsh_profile` from home path and move to `$XDG_CONFIG_HOME/zsh/`
-- cp $HOME/.zsh_profile $XDG_CONFIG_HOME/zsh/
+```
+ cp $HOME/.zsh_profile $XDG_CONFIG_HOME/zsh/
+```
 - Map fzf key binding. Source the corresponding file for your shell. 
 
  In Linux:
