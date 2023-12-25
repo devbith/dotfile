@@ -51,3 +51,26 @@ bindkey "^A" fzf-history-widget
 
 
 [[ -s "$ZDOTDIR/.zsh_profile" ]] && source "$ZDOTDIR/.zsh_profile" ]]
+
+
+# ------------------------------------------------------------------ Editor alias 
+alias vim="nvim"
+alias v="nvim"
+
+# ------------------------------------------------------------------ Git config 
+
+ function git_checkout_main() {
+   total_branch=$(git branch -l main master | wc -l)
+   if [ $total_branch -eq 2 ]
+   then; 
+     echo "$fg_bold[red]Main branch conflict.$reset_color";
+     git ls-remote --symref origin HEAD | grep -o "master\|main" | xargs git checkout
+   else
+     git checkout main && (exit 0) || (c=$?; git checkout master; (exit $c))
+   fi;
+ }
+
+alias gs='git status'
+alias slog="git log --graph --pretty=format:'%C(auto) %h %cr -%d %s %C(cyan)<%an>' --abbrev-commit -n 15"
+alias main="git_checkout_main"
+
