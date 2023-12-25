@@ -37,19 +37,19 @@ sudo dnf -y install fd-find bat git-delta;
 ```
 rm $XDG_CONFIG_HOME/zsh/.zshrc; ln -s $dotfile_path/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc;
 ```
-- Copy `.zshprofile` from home path and move to `$XDG_CONFIG_HOME/zsh/`
+- Copy `.zprofile` from home path and move to `$XDG_CONFIG_HOME/zsh/`
 ```
-cp $HOME/.zshprofile $XDG_CONFIG_HOME/zsh/
+cp $HOME/.zprofile $XDG_CONFIG_HOME/zsh/
 ```
 - Map fzf key binding. Source the corresponding file for your shell. 
 
  In Linux:
 ```
-echo "source /usr/share/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/zsh/.zshprofile
+echo "source /usr/share/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/zsh/.zprofile
 ```
   In Mac:
 ```
-echo "source /opt/homebrew/opt/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/zsh/.zshprofile
+echo "source /opt/homebrew/opt/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/zsh/.zprofile
 ```
 
 - Configure git config folder and link config file;
@@ -59,7 +59,7 @@ rm $HOME/.gitconfig; rm $HOME/.gitignore; rm -rf $XDG_CONFIG_HOME/git; mkdir -p 
 
 - Optional: For mac, add the zsh-completion
 https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
-Add the following in .zshprofile
+Add the following in .zprofile
 ```
 if type brew &>/dev/null
 then
@@ -95,12 +95,12 @@ rm $HOME/.tmux.conf; rm -rf $XDG_CONFIG_HOME/tmux; mkdir -p $XDG_CONFIG_HOME/tmu
 
 #### Install <a href="https://sdkman.io/install"> SDKMAN </a>
 ```
-export SDKMAN_DIR="$XDG_DATA_HOME/sdkman" && curl -s "https://get.sdkman.io" | bash; echo 'export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"' >> $XDG_CONFIG_HOME/zsh/.zshprofile
+export SDKMAN_DIR="$XDG_DATA_HOME/sdkman" && curl -s "https://get.sdkman.io" | bash; echo 'export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"' >> $XDG_CONFIG_HOME/zsh/.zprofile
 ```
 
 
 #### Install `ruby`
-- Follow the last instruction put the system variable in  `~/.zshprofile`
+- Follow the last instruction put the system variable in  `~/.zprofile`
  
 #### Install `glow`
  https://github.com/charmbracelet/glow
