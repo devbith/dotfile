@@ -55,10 +55,7 @@ echo "source /opt/homebrew/opt/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/z
 rm $HOME/.gitconfig; rm $HOME/.gitignore; rm -rf $XDG_CONFIG_HOME/git; mkdir -p $XDG_CONFIG_HOME/git;ln -s $dotfile_path/config $XDG_CONFIG_HOME/git/config;ln -s $dotfile_path/ignore $XDG_CONFIG_HOME/git/ignore;
 ```
 
-- Configure tmux config folder and link tmux file
-```
-rm $HOME/.tmux.conf; rm -rf $XDG_CONFIG_HOME/tmux; mkdir -p $XDG_CONFIG_HOME/tmux/; ln -s $dotfile_path/tmux.conf $XDG_CONFIG_HOME/tmux/tmux.conf;
-```
+
 
 #### 6. Install Neovim 
 - Install Neovim
@@ -74,5 +71,10 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 - Open Neovim and install plugin with `:PluginInstall`
 
 
-#### 7. Install Tmux
+#### 7. Install Tmux 
+
+- Configure tmux config folder and link tmux file
+```
+rm $HOME/.tmux.conf; rm -rf $XDG_CONFIG_HOME/tmux; mkdir -p $XDG_CONFIG_HOME/tmux/; ln -s $dotfile_path/tmux.conf $XDG_CONFIG_HOME/tmux/tmux.conf;
+```
 
