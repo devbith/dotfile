@@ -26,9 +26,9 @@ rm $HOME/.zshenv;ln -s $dotfile_path/.zshenv $HOME/.zshenv;
 > Note: Restart the terminal and repeat `step 1`
 
 #### 4. Install 
-- Install Fuzzy finder, fd-find and Bat 
+- Install fuzzy finder, fd-find, bat and git-delta 
 ```
-sudo dnf -y install fd-find bat; 
+sudo dnf -y install fd-find bat git-delta; 
 ```
 - Install Oh-my-zsh
 - Delete and replace .zshrc created by oh-my-zsh 
