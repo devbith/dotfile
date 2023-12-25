@@ -43,10 +43,11 @@ rm $XDG_CONFIG_HOME/zsh/.zshrc; ln -s $dotfile_path/.zshrc $XDG_CONFIG_HOME/zsh/
 ```
 echo "source /usr/share/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/zsh/.zsh_profile
 ```
+
 - Configure git config folder and link config file;
-  ```
+```
 rm $HOME/.gitconfig; rm $HOME/.gitignore; rm -rf $XDG_CONFIG_HOME/git; mkdir -p $XDG_CONFIG_HOME/git;ln -s $dotfile_path/config $XDG_CONFIG_HOME/git/config;ln -s $dotfile_path/ignore $XDG_CONFIG_HOME/git/ignore;
-  ```
+```
 
 #### 6. Install Neovim 
 - Install Neovim
