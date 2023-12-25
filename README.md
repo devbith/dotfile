@@ -26,7 +26,7 @@ rm $HOME/.zshenv;ln -s $dotfile_path/.zshenv $HOME/.zshenv;
 > Note: Restart the terminal and repeat `step 1`
 
 #### 4. Install 
-- Install fuzzy finder, fd-find, bat and git-delta 
+- Install fuzzy finder, fd-find, bat, git-delta and tmux
 ```
 sudo dnf -y install fd-find bat git-delta; 
 ```
@@ -47,6 +47,11 @@ echo "source /usr/share/fzf/shell/key-bindings.zsh" >> $XDG_CONFIG_HOME/zsh/.zsh
 - Configure git config folder and link config file;
 ```
 rm $HOME/.gitconfig; rm $HOME/.gitignore; rm -rf $XDG_CONFIG_HOME/git; mkdir -p $XDG_CONFIG_HOME/git;ln -s $dotfile_path/config $XDG_CONFIG_HOME/git/config;ln -s $dotfile_path/ignore $XDG_CONFIG_HOME/git/ignore;
+```
+
+- Configure tmux config folder and link tmux file
+```
+rm $HOME/.tmux.conf; rm -rf $XDG_CONFIG_HOME/tmux; mkdir -p $XDG_CONFIG_HOME/tmux/; ln -s $dotfile_path/tmux.conf $XDG_CONFIG_HOME/tmux/tmux.conf;
 ```
 
 #### 6. Install Neovim 
