@@ -50,8 +50,8 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 bindkey "^A" fzf-history-widget
 
 # ------------------------------------------------------------------ Editor alias 
-alias vim="nvim"
-alias v="nvim"
+export alias vim="nvim"
+export alias v="nvim"
 
 # ------------------------------------------------------------------ Git config 
 
