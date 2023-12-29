@@ -91,6 +91,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 rm $HOME/.tmux.conf; rm -rf $XDG_CONFIG_HOME/tmux; mkdir -p $XDG_CONFIG_HOME/tmux/; ln -s $dotfile_path/tmux.conf $XDG_CONFIG_HOME/tmux/tmux.conf;
 ```
 
+- Install tmux-yank plugin ( Go through the README.md of https://github.com/tmux-plugins/tmux-yank)
 #### Other
 
 #### Install <a href="https://sdkman.io/install"> SDKMAN </a>
