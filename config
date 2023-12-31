@@ -1,8 +1,3 @@
-[commit]
-	gpgsign = true
-[user]
-	signingkey = 8A9DF3C00603FD8B4338D51B80FE69836A3483EF
-
 [core]
     pager = delta
 
@@ -23,3 +18,15 @@
     hunk-header-file-style = red
     hunk-header-line-number-style = "#067a00"
     hunk-header-style = file line-number syntax
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	program = gpg
+
+[includeIf "gitdir:~/devbith/**"]
+  path = ~/devbith/.gitconfig
+
+[includeIf "gitdir:~/trustly/**"]
+  path = ~/trustly/.gitconfig

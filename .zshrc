@@ -3,6 +3,8 @@ export ZSH="$ZDOTDIR/ohmyzsh"
 # oh-my-zsh theme
 ZSH_THEME="robbyrussell"
 
+# Uncomment the following line to disable auto-setting terminal title. 
+DISABLE_AUTO_TITLE="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
@@ -45,13 +47,18 @@ function f() {
     vim $f_result
   fi
 }
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# export FZF_CTRL_R_OPTS=" --bind 'ctrl-d:become(ls -l)' "
+
 bindkey "^A" fzf-history-widget
+bindkey -M vicmd "^A" fzf-history-widget
 
 # ------------------------------------------------------------------ Editor alias 
-export alias vim="nvim"
-export alias v="nvim"
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
 
 # ------------------------------------------------------------------ Git config 
 
@@ -73,3 +80,7 @@ alias main="git_checkout_main"
 # --------------------------------------------------------- Edit inline command in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
+
+# --------------------------------------------------------- Edit inline command in vim with ctrl-e:
+bindkey "^ " clear-screen
+bindkey -M vicmd "^ " clear-screen

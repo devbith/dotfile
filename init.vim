@@ -6,6 +6,7 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/vim-scripts/ReplaceWithRegister'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'christoomey/vim-system-copy'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive' 
 Plug 'Yggdroot/indentLine'
@@ -43,7 +44,7 @@ let mapleader = " "  " Leader key
 map <leader>s :w<CR>
 map <leader>sq :wq<CR>
 map <leader>qb :bd<CR>
-map <leader>qq :q<CR>
+map <leader>qq :q!<CR>
 map <leader>qf :qa!<CR>
 
 " ----------------------------------------------------------------- General vim configuration 
