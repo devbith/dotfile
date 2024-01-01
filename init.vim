@@ -14,7 +14,18 @@ Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'ellisonleao/glow.nvim'
+Plug 'junegunn/fzf'
 call plug#end()
+
+"---------------------------------------------------------------------- Vim Highlightedyank
+let g:highlightedyank_highlight_color = "rgba(160, 160, 160, 155)"
+let g:highlightedyank_highlight_duration = 400
+let g:highlightedyank_highlight_in_visual = 0
+
+"--------------------------------------------------------------------- Enable indentLine plugin for yaml file type 
+let g:indentLine_enabled = 1
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+let g:indentLine_char = '⦙'
 
 " -------------------------------------------------------------------- Bottom status bar
  function! HasTrailingWhitespace()
@@ -27,6 +38,7 @@ call plug#end()
 
 set statusline=
 set statusline+=%#LineNr#
+set laststatus=2
 
 " Use a divider to separate the left side from the right side.
 set statusline+=%=
@@ -46,6 +58,10 @@ map <leader>sq :wq<CR>
 map <leader>qb :bd<CR>
 map <leader>qq :q!<CR>
 map <leader>qf :qa!<CR>
+
+"------------------------------------------------------------------ Mapping
+nmap <leader>ff :Files<CR>
+nmap <leader>fw :Rg 
 
 " ----------------------------------------------------------------- General vim configuration 
 set wildoptions-=pum                  " Horizontal wild menu

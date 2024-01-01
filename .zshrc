@@ -48,9 +48,9 @@ function f() {
   fi
 }
 
-export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix '
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# export FZF_CTRL_R_OPTS=" --bind 'ctrl-d:become(ls -l)' "
+export FZF_DEFAULT_OPTS='--height 40% --border'
 
 bindkey "^A" fzf-history-widget
 bindkey -M vicmd "^A" fzf-history-widget
