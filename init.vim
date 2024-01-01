@@ -22,7 +22,7 @@ let g:highlightedyank_highlight_color = "rgba(160, 160, 160, 155)"
 let g:highlightedyank_highlight_duration = 400
 let g:highlightedyank_highlight_in_visual = 0
 
-"--------------------------------------------------------------------- Enable indentLine plugin for yaml file type 
+"--------------------------------------------------------------------- Enable indentLine plugin for yaml file type
 let g:indentLine_enabled = 1
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 let g:indentLine_char = '⦙'
@@ -49,7 +49,7 @@ set statusline+=\ %m\ %M\ %y\ %{&fileencoding}\ %R
 set statusline+=\ %l\:%c\ [%p%%]
 set statusline+=%{HasTrailingWhitespace()}
 
-" ---------------------------------------------------------------- Basic Save & Exist Mapping 
+" ---------------------------------------------------------------- Basic Save & Exist Mapping
 
 let mapleader = " "  " Leader key
 
@@ -61,7 +61,7 @@ map <leader>qf :qa!<CR>
 
 "------------------------------------------------------------------ Mapping
 nmap <leader>ff :Files<CR>
-nmap <leader>fw :Rg 
+nmap <leader>fw :Rg
 
 " ----------------------------------------------------------------- General vim configuration 
 set wildoptions-=pum                  " Horizontal wild menu
