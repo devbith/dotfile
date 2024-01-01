@@ -40,6 +40,7 @@ zle-line-init () {
 zle -N zle-line-init
 
 
+
 # ------------------------------------------------ Fuzzy finder config 
 function f() {
   f_result=$(fzf --height 70% --layout=reverse --border --preview 'bat --color=always {}')
@@ -55,10 +56,15 @@ export FZF_DEFAULT_OPTS='--height 40% --border'
 bindkey "^A" fzf-history-widget
 bindkey -M vicmd "^A" fzf-history-widget
 
+
+
+
+
 # ------------------------------------------------------------------ Editor alias 
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
+
 
 # ------------------------------------------------------------------ Git config 
 
@@ -76,6 +82,9 @@ alias v="nvim"
 alias gs='git status'
 alias slog="git log --graph --pretty=format:'%C(auto) %h %cr -%d %s %C(cyan)<%an>' --abbrev-commit -n 15"
 alias main="git_checkout_main"
+
+
+
 
 # --------------------------------------------------------- Edit inline command in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
