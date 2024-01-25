@@ -1,4 +1,17 @@
-" ------------------------------------------------------------ Vim-Plug plugin manager config 
+" ---------------------------------------------------------------- Basic Save & Exist Mapping
+
+let mapleader = " "  " Leader key
+
+map <leader>s :w<CR>
+map <leader>sq :wq<CR>
+map <leader>qb :bd<CR>
+map <leader>qq :q!<CR>
+map <leader>qf :qa!<CR>
+
+nnoremap <Leader>bp :bp<CR>
+nnoremap <Leader>bn :bn<CR>
+
+" ------------------------------------------------------------ Vim-Plug plugin manager config
 
 call plug#begin()
 Plug 'https://github.com/tpope/vim-surround'
@@ -6,6 +19,7 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/vim-scripts/ReplaceWithRegister'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'christoomey/vim-system-copy'
+Plug 'preservim/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive' 
@@ -21,6 +35,16 @@ call plug#end()
 let g:highlightedyank_highlight_color = "rgba(160, 160, 160, 155)"
 let g:highlightedyank_highlight_duration = 400
 let g:highlightedyank_highlight_in_visual = 0
+let g:loaded_matchparen=1 
+
+" ---------------------------------------------------------------------- Netrw & Nerdtree
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeWinSize=60
+
+nmap <silent> <leader>mm :NERDTreeToggle<CR>
+nmap <silent> <leader>mf :NERDTreeFind<CR>
 
 "--------------------------------------------------------------------- Enable indentLine plugin for yaml file type
 let g:indentLine_enabled = 1
@@ -49,21 +73,14 @@ set statusline+=\ %m\ %M\ %y\ %{&fileencoding}\ %R
 set statusline+=\ %l\:%c\ [%p%%]
 set statusline+=%{HasTrailingWhitespace()}
 
-" ---------------------------------------------------------------- Basic Save & Exist Mapping
-
-let mapleader = " "  " Leader key
-
-map <leader>s :w<CR>
-map <leader>sq :wq<CR>
-map <leader>qb :bd<CR>
-map <leader>qq :q!<CR>
-map <leader>qf :qa!<CR>
-
-"------------------------------------------------------------------ Mapping
+"------------------------------------------------------------------ Search file and words. 
 nmap <leader>ff :Files<CR>
-nmap <leader>fw :Rg
+"NOTE: Don't remove the whitepsace after Rg
+nmap <leader>fw :Rg 
 
 " ----------------------------------------------------------------- General vim configuration 
+set path+=**                          " Adds all subdirectories to the path
+set wildignore+=*.class               " Ignore *.class on find
 set wildoptions-=pum                  " Horizontal wild menu
 set showcmd                           " Show size of visual selection
 set showmatch                         " Show matching braces

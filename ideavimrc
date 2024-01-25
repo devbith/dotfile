@@ -1,0 +1,50 @@
+"" Source your vimrc
+source $XDG_CONFIG_HOME/nvim/init.vim
+
+set idearefactormode=keep
+set ideajoin
+set surround
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+" Do incremental searching.
+set incsearch
+" Don't use Ex mode, use Q for formatting.
+map Q q
+
+"" Map \b to toggle the breakpoint on the current line
+map <leader>b <Action>(ToggleLineBreakpoint)
+
+map <leader>ff <Action>(SearchEverywhere)
+map <leader>fw <Action>(FindInPath)
+map gf <Action>(GotoDeclaration)
+nnoremap <silent> <Leader>m :action ActivateProjectToolWindow<CR>
+nnoremap <silent> <Leader>cm :action ClearBookmarks<CR>
+nnoremap <leader>o <Action>(FileStructurePopup)
+
+nnoremap m1 :action ToggleBookmark1<CR>
+nnoremap m2 :action ToggleBookmark2<CR>
+nnoremap m3 :action ToggleBookmark3<CR>
+nnoremap m4 :action ToggleBookmark4<CR>
+nnoremap m5 :action ToggleBookmark5<CR>
+
+nnoremap ma :action ToggleBookmarkA<CR>
+nnoremap mb :action ToggleBookmarkB<CR>
+nnoremap mc :action ToggleBookmarkC<CR>
+nnoremap md :action ToggleBookmarkD<CR>
+nnoremap me :action ToggleBookmarkE<CR>
+
+nnoremap `a `A
+nnoremap `b `B
+nnoremap `c `C
+nnoremap `d `D
+nnoremap `e `E
+
+
+set NERDTree # File Explorer
+noremap <leader>ef :NERDTree<CR>
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
+
+
+set highlightedyank # Highlight what you try to copy

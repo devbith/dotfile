@@ -6,6 +6,7 @@
 
 [delta]
     features = decorations
+    navigate = true
 
 [delta "interactive"]
     keep-plus-minus-markers = false
@@ -18,6 +19,9 @@
     hunk-header-file-style = red
     hunk-header-line-number-style = "#067a00"
     hunk-header-style = file line-number syntax
+
+[merge]
+    conflictstyle = diff3
 
 [commit]
 	gpgsign = true

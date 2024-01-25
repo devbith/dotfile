@@ -6,7 +6,7 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line to disable auto-setting terminal title. 
 DISABLE_AUTO_TITLE="true"
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git docker docker-compose kubectl minikube argocd pass vault)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -45,7 +45,7 @@ zle -N zle-line-init
 function f() {
   f_result=$(fzf --height 70% --layout=reverse --border --preview 'bat --color=always {}')
   if [ $? -eq 0 ]; then
-    vim $f_result
+    nvim $f_result
   fi
 }
 
@@ -55,9 +55,6 @@ export FZF_DEFAULT_OPTS='--height 40% --border'
 
 bindkey "^A" fzf-history-widget
 bindkey -M vicmd "^A" fzf-history-widget
-
-
-
 
 
 # ------------------------------------------------------------------ Editor alias 
