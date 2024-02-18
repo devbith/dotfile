@@ -11,7 +11,7 @@ plugins=(git docker docker-compose kubectl minikube argocd pass vault zsh-syntax
 source $ZSH/oh-my-zsh.sh
 
 # ----------------------------------------------------------------------- Prompt customization
-PROMPT='%{$fg[white]%}%~%{$reset_color%}$(git_prompt_info)'
+PROMPT='%{$fg[cyan]%}%m: %{$fg[white]%}%~%{$reset_color%}$(git_prompt_info)'
 PROMPT+=" %(?:%{$fg_bold[green]%}$ :%{$fg_bold[red]%}$ )%{$reset_color%}"
 
 # -------------------------------------------------------------- Git settings
