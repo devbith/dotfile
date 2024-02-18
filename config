@@ -1,5 +1,6 @@
 [core]
     pager = delta
+	autocrlf = input
 
 [interactive]
     diffFilter = delta --color-only --features=interactive
@@ -34,3 +35,9 @@
 
 [includeIf "gitdir:~/trustly/**"]
   path = ~/trustly/.gitconfig
+[push]
+	autoSetupRemote = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
