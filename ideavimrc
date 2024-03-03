@@ -1,5 +1,4 @@
-"" Source your vimrc
-source $XDG_CONFIG_HOME/nvim/init.vim
+source ~/.vim/vimrc
 
 set idearefactormode=keep
 set ideajoin

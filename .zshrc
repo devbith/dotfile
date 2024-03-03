@@ -8,6 +8,8 @@ DISABLE_AUTO_TITLE="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git docker docker-compose kubectl minikube argocd pass vault zsh-syntax-highlighting)
 
+ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
 source $ZSH/oh-my-zsh.sh
 
 # ----------------------------------------------------------------------- Prompt customization
@@ -45,7 +47,7 @@ zle -N zle-line-init
 function f() {
   f_result=$(fzf --height 70% --layout=reverse --border --preview 'bat --color=always {}')
   if [ $? -eq 0 ]; then
-    nvim $f_result
+    vim $f_result
   fi
 }
 
@@ -58,9 +60,9 @@ bindkey -M vicmd "^A" fzf-history-widget
 
 
 # ------------------------------------------------------------------ Editor alias 
-alias vim="nvim"
-alias vi="nvim"
-alias v="nvim"
+alias vim="vim"
+alias vi="vim"
+alias v="vim"
 
 
 # ------------------------------------------------------------------ Git config 

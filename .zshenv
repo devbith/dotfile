@@ -19,8 +19,9 @@ setopt HIST_FIND_NO_DUPS      # Do not display a line previously found.
 setopt HIST_SAVE_NO_DUPS      # Don't write duplicate entries in the history file.
 setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks before recording entry.
 
+
 # ------------------------------------------------ Neovim config and alias
-export EDITOR="nvim"
+export EDITOR="vim"
 
 # ------------------------------------------------ Returns the path of the terminal device 
 export GPG_TTY=$(tty)
