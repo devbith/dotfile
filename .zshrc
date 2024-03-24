@@ -6,9 +6,11 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line to disable auto-setting terminal title. 
 DISABLE_AUTO_TITLE="true"
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose kubectl minikube argocd pass vault zsh-syntax-highlighting)
+# plugins=(git docker docker-compose kubectl minikube argocd pass vault zsh-syntax-highlighting microk8s)
+# compdef microk8s.kubectl=kubectl
+# compdef mk=kubectl
 
- fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+# fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 source $ZSH/oh-my-zsh.sh
 

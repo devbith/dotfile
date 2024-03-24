@@ -1,6 +1,6 @@
 [core]
     pager = delta
-	autocrlf = input
+  	autocrlf = input
 
 [interactive]
     diffFilter = delta --color-only --features=interactive

@@ -25,5 +25,4 @@ export EDITOR="vim"
 
 # ------------------------------------------------ Returns the path of the terminal device 
 export GPG_TTY=$(tty)
-
-export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+export CLICOLOR=1
