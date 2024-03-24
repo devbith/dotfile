@@ -1,28 +1,19 @@
-export ZSH="$ZDOTDIR/ohmyzsh"
+# ----------------------------------------------------------------------- Prompt customization with git branch
+COLOR_DEF=$'%f'
+COLOR_USR=$'%F{235}'
+COLOR_DIR=$'%F{81}'
+COLOR_GIT=$'%F{34}'
+COLOR_GIT_CHANGE=$'%F{214}'
 
-# oh-my-zsh theme
-ZSH_THEME="robbyrussell"
+function parse_git_dirty {
+  [[ $(git status --porcelain 2> /dev/null) ]] && echo -e "${COLOR_GIT_CHANGE}*${COLOR_GIT}"
+}
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1$(parse_git_dirty))/"
+}
 
-# Uncomment the following line to disable auto-setting terminal title. 
-DISABLE_AUTO_TITLE="true"
-# Add wisely, as too many plugins slow down shell startup.
-# plugins=(git docker docker-compose kubectl minikube argocd pass vault zsh-syntax-highlighting microk8s)
-# compdef microk8s.kubectl=kubectl
-# compdef mk=kubectl
-
-# fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-
-source $ZSH/oh-my-zsh.sh
-
-# ----------------------------------------------------------------------- Prompt customization
-PROMPT='%{$fg[cyan]%}%m: %{$fg[white]%}%~%{$reset_color%}$(git_prompt_info)'
-PROMPT+=" %(?:%{$fg_bold[green]%}$ :%{$fg_bold[red]%}$ )%{$reset_color%}"
-
-# -------------------------------------------------------------- Git settings
-ZSH_THEME_GIT_PROMPT_PREFIX=" ${FG[075]}(${FG[078]}"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
-ZSH_THEME_GIT_PROMPT_DIRTY="${FG[214]}*%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="${FG[075]})%{$reset_color%}"
+setopt PROMPT_SUBST
+export PROMPT='${COLOR_DIR}%~${COLOR_GIT}$(parse_git_branch)${COLOR_DEF} $ '
 
 # ------------------------------------------------ Vim mode terminal (GNU ReadLine Editor) & Cursor Config
 bindkey -v
@@ -44,10 +35,19 @@ zle-line-init () {
 zle -N zle-line-init
 
 
+# Yank to the system clipboard
+function vi-yank-xclip {
+    zle vi-yank
+   echo "$CUTBUFFER" | pbcopy -i
+}
+
+zle -N vi-yank-xclip
+bindkey -M vicmd 'y' vi-yank-xclip
+
 
 # ------------------------------------------------ Fuzzy finder config 
 function f() {
-  f_result=$(fzf --height 70% --layout=reverse --border --preview 'bat --color=always {}')
+  f_result=$(fzf --height 70% --border --preview 'bat --color=always {}')
   if [ $? -eq 0 ]; then
     vim $f_result
   fi
@@ -57,14 +57,22 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix '
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--height 40% --border'
 
-bindkey "^A" fzf-history-widget
-bindkey -M vicmd "^A" fzf-history-widget
+bindkey "^O" fzf-history-widget 
+bindkey -M vicmd "^O" fzf-history-widget
+
+# CTRL-Y to copy the command into clipboard using pbcopy
+export FZF_CTRL_R_OPTS=" --reverse
+  --preview 'echo {}' --preview-window up:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic"
 
 
-# ------------------------------------------------------------------ Editor alias 
+# ------------------------------------------------------------------ 
 alias vim="vim"
 alias vi="vim"
 alias v="vim"
+alias l="ls -al"
 
 
 # ------------------------------------------------------------------ Git config 
@@ -83,9 +91,6 @@ alias v="vim"
 alias gs='git status'
 alias slog="git log --graph --pretty=format:'%C(auto) %h %cr -%d %s %C(cyan)<%an>' --abbrev-commit -n 15"
 alias main="git_checkout_main"
-
-
-
 
 # --------------------------------------------------------- Edit inline command in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
