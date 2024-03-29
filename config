@@ -27,9 +27,6 @@
 [commit]
 	gpgsign = true
 
-[gpg]
-	program = gpg
-
 [includeIf "gitdir:~/devbith/**"]
   path = ~/devbith/.gitconfig
 
@@ -41,3 +38,5 @@
 	ui = auto
 [branch]
 	sort = -committerdate
+[credential]
+	helper = /usr/bin/pass-git-helper

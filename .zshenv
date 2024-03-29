@@ -18,11 +18,17 @@ setopt HIST_IGNORE_ALL_DUPS   # Delete old recorded entry if new entry is a dupl
 setopt HIST_FIND_NO_DUPS      # Do not display a line previously found.
 setopt HIST_SAVE_NO_DUPS      # Don't write duplicate entries in the history file.
 setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks before recording entry.
+setopt INC_APPEND_HISTORY     # Immediately save command to history file
+setopt SHARE_HISTORY
+setopt auto_cd
 
 
-# ------------------------------------------------ Neovim config and alias
+# ------------------------------------------------ vim config and alias
 export EDITOR="vim"
 
 # ------------------------------------------------ Returns the path of the terminal device 
 export GPG_TTY=$(tty)
 export CLICOLOR=1
+
+
+export PROMPT_COMMAND="history -a; history -n"

@@ -1,3 +1,43 @@
+# ---------------------------------------------- XDG paths
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+# ---------------------------------------------- ZSH shell default folder 
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"                  
+
+# ---------------------------------------------- Zsh history config
+export HISTSIZE=10000000
+export SAVEHIST=$HISTSIZE
+export HISTFILE="$ZDOTDIR/.zsh_history"
+export HISTTIMEFORMAT="[%F %T] "
+
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS       # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS   # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS      # Do not display a line previously found.
+setopt HIST_SAVE_NO_DUPS      # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks before recording entry.
+setopt HIST_IGNORE_SPACE
+setopt INC_APPEND_HISTORY     # Immediately save command to history file
+setopt SHARE_HISTORY   	      # Share history between session
+
+
+# ------------------------------------------------ vim config and alias
+export EDITOR="vim"
+
+# ------------------------------------------------ Returns the path of the terminal device 
+export GPG_TTY=$(tty)
+export CLICOLOR=1
+
+
+export PROMPT_COMMAND="history -a; history -n"
+
+
+
+
+
+
 # ----------------------------------------------------------------------- Prompt customization with git branch
 COLOR_DEF=$'%f'
 COLOR_USR=$'%F{235}'
@@ -96,6 +136,6 @@ alias main="git_checkout_main"
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# --------------------------------------------------------- Edit inline command in vim with ctrl-e:
-bindkey "^ " clear-screen
-bindkey -M vicmd "^ " clear-screen
+# --------------------------------------------------------- Enter your passphrase in Terminal: 
+export GPG_TTY=$(tty) 
+export PINENTRY_USER_DATA="USE_CURSES=1"
