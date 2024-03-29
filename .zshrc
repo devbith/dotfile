@@ -11,6 +11,7 @@ export HISTSIZE=10000000
 export SAVEHIST=$HISTSIZE
 export HISTFILE="$ZDOTDIR/.zsh_history"
 export HISTTIMEFORMAT="[%F %T] "
+export PROMPT_COMMAND="history -a; history -n"
 
 setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
 setopt HIST_IGNORE_DUPS       # Don't record an entry that was just recorded again.
@@ -28,16 +29,8 @@ export EDITOR="vim"
 
 # ------------------------------------------------ Returns the path of the terminal device 
 export GPG_TTY=$(tty)
+export PINENTRY_USER_DATA="USE_CURSES=1"
 export CLICOLOR=1
-
-
-export PROMPT_COMMAND="history -a; history -n"
-
-
-
-
-
-
 # ----------------------------------------------------------------------- Prompt customization with git branch
 COLOR_DEF=$'%f'
 COLOR_USR=$'%F{235}'
@@ -112,8 +105,8 @@ export FZF_CTRL_R_OPTS=" --reverse
 alias vim="vim"
 alias vi="vim"
 alias v="vim"
-alias l="ls -al"
-
+alias ls='ls -al --color=auto'
+alias l="ls"
 
 # ------------------------------------------------------------------ Git config 
 
@@ -136,6 +129,11 @@ alias main="git_checkout_main"
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# --------------------------------------------------------- Enter your passphrase in Terminal: 
-export GPG_TTY=$(tty) 
-export PINENTRY_USER_DATA="USE_CURSES=1"
+
+bindkey "^ " clear-screen
+bindkey -M vicmd "^ " clear-screen
+
+
+[ -f ~/.config/zsh/.fzf.zsh ] && source ~/.config/zsh/.fzf.zsh
+source /home/bishal/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/bishal/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

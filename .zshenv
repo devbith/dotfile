@@ -5,6 +5,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 
 # ---------------------------------------------- ZSH shell default folder 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"                  
+export TERM=xterm
 
 # ---------------------------------------------- Zsh history config
 export HISTSIZE=100000
