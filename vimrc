@@ -30,7 +30,7 @@ nnoremap <C-w>\| <C-W>v
 highlight VertSplit cterm=NONE ctermfg=19
 set cursorline
 set cursorlineopt=number
-highlight LineNr cterm=NONE ctermfg=243 ctermbg=233
+highlight LineNr cterm=NONE ctermfg=grey ctermbg=233
 highlight CursorLineNr cterm=NONE ctermfg=10 ctermbg=black
 
 set fillchars=stl:—     " fill active window's statusline with -
