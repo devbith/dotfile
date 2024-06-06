@@ -25,17 +25,12 @@ setopt SHARE_HISTORY   	      # Share history between session
 
 
 # ------------------------------------------------ vim config and alias
-export EDITOR="nvim"
-
-bindkey "^?" backward-delete-char
+export EDITOR="vim"
 
 # ------------------------------------------------ Returns the path of the terminal device 
 export GPG_TTY=$(tty)
 export PINENTRY_USER_DATA="USE_CURSES=1"
 export CLICOLOR=1
-
-export PROMPT_COMMAND="history -a; history -n"
-
 # ----------------------------------------------------------------------- Prompt customization with git branch
 COLOR_DEF=$'%f'
 COLOR_USR=$'%F{235}'
@@ -87,7 +82,7 @@ bindkey -M vicmd 'y' vi-yank-xclip
 function f() {
   f_result=$(fzf --height 70% --border --preview 'bat --color=always {}')
   if [ $? -eq 0 ]; then
-    nvim $f_result
+    vim $f_result
   fi
 }
 
@@ -107,11 +102,12 @@ export FZF_CTRL_R_OPTS=" --reverse
 
 
 # ------------------------------------------------------------------ 
+alias vim="vim"
+alias vi="vim"
+alias v="vim"
 alias ls='ls -al --color=auto'
-alias l="ls -al"
-alias vim="nvim"
-alias vi="nvim"
-alias v="nvim"
+alias l="ls"
+
 # ------------------------------------------------------------------ Git config 
 
  function git_checkout_main() {

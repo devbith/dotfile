@@ -1,44 +1,19 @@
-"---------------------------------------------------------------- Basic Save & Exist Mapping
+" ---------------------------------------------------------------- Basic Save & Exist Mapping
 
 let mapleader = " "  " Leader key
 
-function! CloseBufferOrVim(force='')
-	exec 'write'
-  if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-    exec ("quit" . a:force)
-    quit
-  else
-    exec ("bdelete" . a:force)
-  endif
-endfunction
-
-nnoremap q <Nop>
-
 map <leader>s :w<CR>
-map <leader>sq :call CloseBufferOrVim()<CR>
-map <leader>qq :call CloseBufferOrVim()<CR>
+map <leader>sq :wq<CR>
+map <leader>qb :bd<CR>
+map <leader>qq :q!<CR>
 map <leader>qf :qa!<CR>
 
-nnoremap <Leader>pb :bp<CR>
-nnoremap <Leader>nb :bn<CR>
-nnoremap <Leader>nn :bn<CR>
-
-nnoremap <leader>l gt
-nnoremap <leader>h gT
-
-
-
-" ----------------------------------------------------------- Highlight horizontal and vertical split bar 
-highlight VertSplit cterm=NONE ctermfg=19
-set cursorline
-set cursorlineopt=number
-highlight LineNr cterm=NONE ctermfg=243 ctermbg=233
-highlight CursorLineNr cterm=NONE ctermfg=10 ctermbg=black
+nnoremap <Leader>bp :bp<CR>
+nnoremap <Leader>bn :bn<CR>
 
 " ------------------------------------------------------------ Vim-Plug plugin manager config
 
 call plug#begin()
-Plug 'chr4/nginx.vim'
 Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/vim-scripts/ReplaceWithRegister'
@@ -67,7 +42,6 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeWinSize=60
-let g:NERDTreeNodeDelimiter = "\u00a0"
 
 nmap <silent> <leader>mm :NERDTreeToggle<CR>
 nmap <silent> <leader>mf :NERDTreeFind<CR>
@@ -92,7 +66,7 @@ set laststatus=2
 
 " Use a divider to separate the left side from the right side.
 set statusline+=%=
-
+ 
 " Config for status line on right side.
 set statusline+=%{fugitive#statusline()}
 set statusline+=\ %m\ %M\ %y\ %{&fileencoding}\ %R
@@ -123,7 +97,3 @@ set t_Co=256                          " Set terminal color
 set background=dark                   " no comment
 set textwidth=140
 set autowriteall
-set clipboard=unnamedplus
-
-
-autocmd BufEnter * set conceallevel=0
