@@ -70,11 +70,10 @@ then
 f
 ```
 
-#### 6. Install Neovim 
-- Install Neovim
-- Reference `init.vim` neovim config
+#### 6. Install Vim 
+- Reference `vimrc` vim config
 ```
-rm -rf $XDG_CONFIG_HOME/nvim; mkdir $XDG_CONFIG_HOME/nvim; ln -s $dotfile_path/init.vim $XDG_CONFIG_HOME/nvim/init.vim
+rm -rf $HOME/.vim/vimrc; mkdir $HOME/.vim/vimrc; ln -s $dotfile_path/init.vim $HOME/.vim/vimrc
 ```
 - Install Vim-Plug neovim plugin manager
 ```
