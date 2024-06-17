@@ -72,7 +72,6 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/vim-scripts/ReplaceWithRegister'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'christoomey/vim-system-copy'
-Plug 'preservim/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive' 
@@ -94,10 +93,22 @@ let g:highlightedyank_highlight_in_visual = 0
 let g:loaded_matchparen=1 
 
 " ---------------------------------------------------------------------- Netrw & Nerdtree
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeWinSize=60
+" let g:netrw_banner = 0
+" let g:netrw_liststyle = 3
+let g:NERDTreeWinSize=50
+let NERDTreeQuitOnOpen = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let g:NERDTreeNodeDelimiter = "\u00a0"
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
+
+" Open the existing NERDTree on each new tab.
+autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
+
 
 nmap <silent> <leader>mm :NERDTreeToggle<CR>
 nmap <silent> <leader>mf :NERDTreeFind<CR>
@@ -146,7 +157,8 @@ set nowrap                            " Don't wrap long lines
 set incsearch                         " Show search results as you type
 set timeoutlen=600 ttimeoutlen=0     " Remove timeout when hitting escape
 set number ruler                      " Display line number
-set ts=2 sts=2 sw=2 expandtab         " Set tab character to four space http://vimcasts.org/episodes/tabs-and-spaces/
+" set ts=2 sts=2 sw=2 expandtab         " Set tab character to four space http://vimcasts.org/episodes/tabs-and-spaces/
+set tabstop=2 shiftwidth=2 expandtab  " Set tab character to four space http://vimcasts.org/episodes/tabs-and-spaces/
 set backspace=2   	              " Backspace deletes like most programs in insert mode
 set nohlsearch
 set noshowmode
@@ -170,3 +182,6 @@ let &t_te .= "\e[4 q" " Line cursor
 
 autocmd BufRead *.txt syntax match Statement /D:/ 
 autocmd BufRead *.txt syntax match Constant /Q:/ 
+
+
+nnoremap <C-t> :tabnew<Space>

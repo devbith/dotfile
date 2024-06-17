@@ -87,8 +87,13 @@ function f() {
 }
 
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix '
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS='--height 40% --border'
+export FZF_DEFAULT_OPTS='
+  --height 40% --layout reverse --border top
+	--color=border:#262626,label:#aeaeae,query:#d9d9d9
+  --border="sharp" --border-label="" --preview-window="border-thinblock" --prompt="> "
+  --marker=">" --pointer=">" --separator="─" --scrollbar="│"
+  --info="right"'
+
 
 bindkey "^O" fzf-history-widget 
 bindkey -M vicmd "^O" fzf-history-widget
