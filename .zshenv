@@ -25,7 +25,15 @@ setopt auto_cd
 
 
 # ------------------------------------------------ vim config and alias
-export EDITOR="vim"
+export EDITOR="nvim"
+QUICKNOTE_FORMAT="%Y-%m-%d"
+# Change the quicknote format to get rid of the word "quicknote"
+QUICKNOTE_FORMAT="%Y-%m-%d"
+# Set extension to plain txt instead of markdown
+NOTES_EXT="md"
+# Define the directory where notes are stored
+NOTES_DIRECTORY=~/devbith/notes
+
 
 # ------------------------------------------------ Returns the path of the terminal device 
 export GPG_TTY=$(tty)

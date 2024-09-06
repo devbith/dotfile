@@ -16,6 +16,7 @@ nnoremap <Leader>nn :bn<CR>
 nnoremap <leader>l gt
 nnoremap <leader>h gT
 
+nnoremap <C-t> :tabnew<Space>
 nnoremap <leader>th :set hlsearch!<cr>
 nnoremap <Leader>rw :%s/\<<C-r><C-w>\>//g<Left><Left>
 
@@ -170,7 +171,7 @@ set paste
 set hlsearch
 set mouse=a
 
-autocmd BufEnter * set conceallevel=0
+autocmd BufEnter *.json set conceallevel=0
 
 " Use a line cursor within insert mode and a block cursor everywhere else.
 let &t_SI = "\e[6 q"
@@ -184,4 +185,3 @@ autocmd BufRead *.txt syntax match Statement /D:/
 autocmd BufRead *.txt syntax match Constant /Q:/ 
 
 
-nnoremap <C-t> :tabnew<Space>

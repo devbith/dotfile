@@ -25,7 +25,7 @@ setopt SHARE_HISTORY   	      # Share history between session
 
 
 # ------------------------------------------------ vim config and alias
-export EDITOR="vim"
+export EDITOR="nvim"
 
 # ------------------------------------------------ Returns the path of the terminal device 
 export GPG_TTY=$(tty)
@@ -82,7 +82,7 @@ bindkey -M vicmd 'y' vi-yank-xclip
 function f() {
   f_result=$(fzf --height 70% --border --preview 'bat --color=always {}')
   if [ $? -eq 0 ]; then
-    vim $f_result
+    nvim $f_result
   fi
 }
 
@@ -107,11 +107,14 @@ export FZF_CTRL_R_OPTS=" --reverse
 
 
 # ------------------------------------------------------------------ 
-alias vim="vim"
-alias vi="vim"
-alias v="vim"
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
 alias ls='ls -al --color=auto'
 alias l="ls"
+alias sdock="lazydocker"
+alias active_autocomplete_kubectl="source <(kubectl completion zsh)"
+alias active_autocomplete_aws-vault='eval "$(aws-vault --completion-script-zsh)"'
 
 # ------------------------------------------------------------------ Git config 
 
