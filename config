@@ -40,3 +40,6 @@
 	sort = -committerdate
 [credential]
 	helper = /usr/bin/pass-git-helper
+[user]
+	name = Bishal Thapa
+	email = bishal.thapa@trustly.com

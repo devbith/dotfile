@@ -24,6 +24,10 @@ setopt INC_APPEND_HISTORY     # Immediately save command to history file
 setopt SHARE_HISTORY   	      # Share history between session
 
 
+# ------------------------------------------------ task tool - https://taskwarrior.org/docs/configuration/  
+export TASKRC=~/devbith/dotfile/task/config/taskrc 
+export TASKDATA=~/devbith/dotfile/task/data
+
 # ------------------------------------------------ vim config and alias
 export EDITOR="nvim"
 
@@ -115,6 +119,7 @@ alias l="ls"
 alias sdock="lazydocker"
 alias active_autocomplete_kubectl="source <(kubectl completion zsh)"
 alias active_autocomplete_aws-vault='eval "$(aws-vault --completion-script-zsh)"'
+alias active_autocomplete_podman='evaul "$(podman completion zsh"'
 
 # ------------------------------------------------------------------ Git config 
 
@@ -141,7 +146,8 @@ bindkey '^e' edit-command-line
 bindkey "^ " clear-screen
 bindkey -M vicmd "^ " clear-screen
 
+[ -f ~/.config/zsh/.zprofile ] && source ~/.config/zsh/.zprofile
 
-[ -f ~/.config/zsh/.fzf.zsh ] && source ~/.config/zsh/.fzf.zsh
-source /home/bishal/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/bishal/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# [ -f ~/.config/zsh/.fzf.zsh ] && source ~/.config/zsh/.fzf.zsh
+# source /home/bishal/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /home/bishal/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

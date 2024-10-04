@@ -1,0 +1,5 @@
+news.version=3.1.0
+verbose=no
+
+report.next.columns=id,start.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description,urgency
+report.next.labels=ID,Active,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg
