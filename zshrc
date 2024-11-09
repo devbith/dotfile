@@ -90,6 +90,8 @@ function f() {
   fi
 }
 
+source <(fzf --zsh)
+
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix '
 export FZF_DEFAULT_OPTS='
   --height 40% --layout reverse --border top
@@ -151,3 +153,8 @@ bindkey -M vicmd "^ " clear-screen
 # [ -f ~/.config/zsh/.fzf.zsh ] && source ~/.config/zsh/.fzf.zsh
 # source /home/bishal/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source /home/bishal/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+

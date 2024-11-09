@@ -1,3 +1,6 @@
+export dotfile_path="$HOME/devbith/dotfile"
+export PATH="$PATH:$dotfile_path/bin"
+
 # ---------------------------------------------- XDG paths
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -39,5 +42,10 @@ NOTES_DIRECTORY=~/devbith/notes
 export GPG_TTY=$(tty)
 export CLICOLOR=1
 
-
 export PROMPT_COMMAND="history -a; history -n"
+
+#-----------------------------------------------
+
+
+
+
