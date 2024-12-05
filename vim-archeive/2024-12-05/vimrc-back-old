@@ -1,21 +1,12 @@
 " ---------------------------------------------------------------- Basic Save & Exist Mapping
 let mapleader = " "  " Leader key
-
-function! CloseBufferOrVim(force='')
-	exec 'write'
-  if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-    exec ("quit" . a:force)
-    quit
-  else
-    exec ("bdelete" . a:force)
-  endif
-endfunction
-
+  
 nnoremap q <Nop>
 
 map <leader>s :w<CR>
-map <leader>sq :call CloseBufferOrVim()<CR>
-map <leader>qq :call CloseBufferOrVim()<CR>
+map <leader>sq :wq<CR>
+map <leader>qb :bd<CR>
+map <leader>qq :q<CR>
 map <leader>qf :qa!<CR>
 
 nnoremap <Leader>bp :bp<CR>
@@ -39,16 +30,12 @@ nnoremap <C-w>\| <C-W>v
 highlight VertSplit cterm=NONE ctermfg=19
 set cursorline
 set cursorlineopt=number
-highlight LineNr cterm=NONE ctermfg=249 ctermbg=233
+highlight LineNr cterm=NONE ctermfg=grey ctermbg=233
 highlight CursorLineNr cterm=NONE ctermfg=10 ctermbg=black
 
 set fillchars=stl:—     " fill active window's statusline with -
 set fillchars+=stlnc:—  " also fill inactive windows
 set fillchars+=vert:\|
-
-let g:netrw_banner=0
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,\(^\|\s\s\)ntuser\.\S\+'
-autocmd FileType netrw set nolist
 
 
 " lEasy Switch from NerdTree
@@ -93,12 +80,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'junegunn/fzf'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 Plug 'dense-analysis/ale'
-Plug 'iamcco/markdown-preview.nvim'
 call plug#end()
 
-"---------------------------------------------------------------------- Markdown preview server port 
-let g:mkdp_port = '3999'
+set viminfo+=n~/.vim/viminfo
 
 "---------------------------------------------------------------------- Vim Highlightedyank
 let g:highlightedyank_highlight_color = "rgba(160, 160, 160, 155)"
@@ -107,12 +93,22 @@ let g:highlightedyank_highlight_in_visual = 0
 let g:loaded_matchparen=1 
 
 " ---------------------------------------------------------------------- Netrw & Nerdtree
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_winsize = 25
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeWinSize=60
+" let g:netrw_banner = 0
+" let g:netrw_liststyle = 3
+let g:NERDTreeWinSize=50
+let NERDTreeQuitOnOpen = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 let g:NERDTreeNodeDelimiter = "\u00a0"
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
+
+" Open the existing NERDTree on each new tab.
+autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
+
 
 nmap <silent> <leader>mm :NERDTreeToggle<CR>
 nmap <silent> <leader>mf :NERDTreeFind<CR>
@@ -161,23 +157,18 @@ set nowrap                            " Don't wrap long lines
 set incsearch                         " Show search results as you type
 set timeoutlen=600 ttimeoutlen=0     " Remove timeout when hitting escape
 set number ruler                      " Display line number
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set smartindent
-set backspace=2   	                  " Backspace deletes like most programs in insert mode
-set hidden                            " Switch buffers without saving them 
+" set ts=2 sts=2 sw=2 expandtab         " Set tab character to four space http://vimcasts.org/episodes/tabs-and-spaces/
+set tabstop=2 shiftwidth=2 expandtab  " Set tab character to four space http://vimcasts.org/episodes/tabs-and-spaces/
+set backspace=2   	              " Backspace deletes like most programs in insert mode
 set nohlsearch
 set noshowmode
 set t_Co=256                          " Set terminal color
 set background=dark                   " no comment
 set textwidth=140
-set autowriteall
+" set autowriteall
 set paste
 set hlsearch
 set mouse=a
-set clipboard=unnamedplus
-set completeopt=noinsert,menuone,noselect
 
 autocmd BufEnter * set conceallevel=0
 
@@ -193,20 +184,4 @@ autocmd BufRead *.txt syntax match Statement /D:/
 autocmd BufRead *.txt syntax match Constant /Q:/ 
 
 
-nmap <leader>11 :.!toilet -w 200 -f term -F border<CR>
-
-filetype plugin indent on
-syntax on
-
-
-
-let term_program=$TERM_PROGRAM
-" Check for conflicts with Apple Terminal app
-if term_program !=? 'Apple_Terminal'
-    set termguicolors
-else
-    if $TERM !=? 'xterm-256color'
-        set termguicolors
-    endif
-endif
-
+nnoremap <C-t> :tabnew<Space>
