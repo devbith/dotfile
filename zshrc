@@ -1,3 +1,10 @@
+# ---------------------------------------------- OH-MY-ZSH  
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="mortalscumbag"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
+
 # ---------------------------------------------- XDG paths
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -10,7 +17,7 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HISTSIZE=10000000
 export SAVEHIST=$HISTSIZE
 export HISTFILE="$ZDOTDIR/.zsh_history"
-export HISTTIMEFORMAT="[%F %T] "
+# export HISTTIMEFORMAT="[%F %T] "
 export PROMPT_COMMAND="history -a; history -n"
 
 setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
@@ -29,7 +36,7 @@ export TASKRC=~/devbith/dotfile/task/config/taskrc
 export TASKDATA=~/devbith/dotfile/task/data
 
 # ------------------------------------------------ vim config and alias
-export EDITOR="vim"
+export EDITOR=nvim
 
 # ------------------------------------------------ Returns the path of the terminal device 
 export GPG_TTY=$(tty)
@@ -81,12 +88,22 @@ function vi-yank-xclip {
 zle -N vi-yank-xclip
 bindkey -M vicmd 'y' vi-yank-xclip
 
+bindkey "^O" fzf-history-widget 
+bindkey -M vicmd "^O" fzf-history-widget
+
+function tmxs() {
+	tmux-sessionizer
+}
+
+zle -N tmxs
+bindkey "^f" tmxs
+bindkey -M vicmd "^f" tmxs
 
 # ------------------------------------------------ Fuzzy finder config 
-function f() {
+function ff() {
   f_result=$(fzf --height 70% --border --preview 'bat --color=always {}')
   if [ $? -eq 0 ]; then
-    vim $f_result
+    nvim $f_result
   fi
 }
 
@@ -101,8 +118,6 @@ export FZF_DEFAULT_OPTS='
   --info="right"'
 
 
-bindkey "^O" fzf-history-widget 
-bindkey -M vicmd "^O" fzf-history-widget
 
 # CTRL-Y to copy the command into clipboard using pbcopy
 export FZF_CTRL_R_OPTS=" --reverse
@@ -113,11 +128,13 @@ export FZF_CTRL_R_OPTS=" --reverse
 
 
 # ------------------------------------------------------------------ 
-alias vim="vim"
-alias vi="vim"
-alias v="vim"
-alias ls='ls -al --color=auto'
-alias l="ls"
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
+alias l='ls -a --color=auto'
+alias ls="ls -T --color=auto"
+alias ll="ls -lTh --color=auto"
+alias lla="ls -alTh --color=auto"
 alias sdock="lazydocker"
 alias active_autocomplete_kubectl="source <(kubectl completion zsh)"
 alias active_autocomplete_aws-vault='eval "$(aws-vault --completion-script-zsh)"'
@@ -148,13 +165,19 @@ bindkey '^e' edit-command-line
 bindkey "^ " clear-screen
 bindkey -M vicmd "^ " clear-screen
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+
+
 [ -f ~/.config/zsh/.zprofile ] && source ~/.config/zsh/.zprofile
 
 # [ -f ~/.config/zsh/.fzf.zsh ] && source ~/.config/zsh/.fzf.zsh
 # source /home/bishal/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source /home/bishal/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-

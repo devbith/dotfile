@@ -9,7 +9,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 # ---------------------------------------------- ZSH shell default folder 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"                  
 export TERM=xterm-256color
-
+export DISABLE_AUTO_TITLE="true"
 # ---------------------------------------------- Zsh history config
 export HISTSIZE=100000
 export HISTFILESIZE=200000
@@ -29,13 +29,13 @@ setopt auto_cd
 
 # ------------------------------------------------ vim config and alias
 export EDITOR="nvim"
-QUICKNOTE_FORMAT="%Y-%m-%d"
+export QUICKNOTE_FORMAT="%Y-%m-%d"
 # Change the quicknote format to get rid of the word "quicknote"
-QUICKNOTE_FORMAT="%Y-%m-%d"
+export QUICKNOTE_FORMAT="%Y-%m-%d"
 # Set extension to plain txt instead of markdown
-NOTES_EXT="md"
+export NOTES_EXT="md"
 # Define the directory where notes are stored
-NOTES_DIRECTORY=~/devbith/notes
+export NOTES_DIRECTORY=~/devbith/notes
 
 
 # ------------------------------------------------ Returns the path of the terminal device 
