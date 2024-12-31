@@ -31,6 +31,9 @@
 [includeIf "gitdir:~/devbith/**"]
   path = ~/devbith/.gitconfig
 
+[includeIf "gitdir:~/.config/nvim/**"]
+  path = ~/devbith/.gitconfig
+
 [includeIf "gitdir:~/trustly/**"]
   path = ~/trustly/.gitconfig
 [push]

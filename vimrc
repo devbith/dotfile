@@ -6,17 +6,15 @@ noremap <leader><leader> <S-:>
 noremap <leader>s :w<CR>
 noremap <leader>xx :wq!<CR>
 
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
+noremap <Leader>y "+y
+noremap <Leader>p "+p
 
 nnoremap <Leader>bp :bp<CR>
 nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>nn :bn<CR>
 
-nnoremap <leader>l gt
-nnoremap <leader>h gT
+nnoremap <Leader>l gt
+nnoremap <Leader>h gT
 
 nnoremap <C-t> :tabnew<Space>
 nnoremap <leader>th :set hlsearch!<cr>
@@ -87,15 +85,16 @@ autocmd Filetype javascript source ~/.vim/cursor_output-main/javascript/cursor_o
 " ----------------------------------------------------------------------------------------------------- Plugin
 "
 call plug#begin()
+  Plug 'preservim/nerdtree'
   Plug 'mbbill/undotree'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-
   Plug 'https://github.com/tpope/vim-surround'
   Plug 'https://github.com/tpope/vim-commentary'
-  Plug 'https://github.com/vim-scripts/ReplaceWithRegister'
-  Plug 'michaeljsmith/vim-indent-object'
-  Plug 'christoomey/vim-system-copy'
+  Plug 'machakann/vim-highlightedyank'
+  Plug 'preservim/nerdtree'
+  Plug 'terryma/vim-multiple-cursors'
+  Plug 'junegunn/vim-peekaboo'
 call plug#end()
 
 " guard for distributions lacking the 'persistent_undo' feature.
@@ -105,7 +104,13 @@ if has('persistent_undo')
     set undofile " finally, enable undo persistence.
 endif
 
-
+" -------------------------------------------------------------- vim-highlight-yank
+if !exists('##TextYankPost')
+  nmap y <Plug>(highlightedyank)
+  xmap y <Plug>(highlightedyank)
+  omap y <Plug>(highlightedyank)
+endif
+let g:highlightedyank_highlight_duration = 600
 " ---------------------------------------------------------------------------Netrw
 let g:netrw_keepdir = 0
 let g:netrw_winsize = 30
@@ -119,3 +124,21 @@ nnoremap <Leader>da :Lexplore<CR>
 " ---------------------------------------------------------------------------FZF
 noremap <leader>ff :Files<CR>
 noremap <Leader>fw :Rg 
+
+
+" -------------------------------------------------------------------------- NerdTree Mapping
+" maping source https://github.com/JetBrains/ideavim/blob/master/doc/NERDTree-support.md
+
+noremap <leader>m :NERDTreeToggle<CR>
+
+let g:NERDTreeMapQuit = 'q'             " Close the NERDTree window
+let g:NERDTreeMapNewFile = 'n'          " Create File 
+let g:NERDTreeMapNewDir = 'N'           " Create Directory 
+let g:NERDTreeMapDelete = 'd'           " Delete file or directory
+let g:NERDTreeMapRefreshRoot = 'R'      " Recursively refresh the current root
+let g:NERDTreeMapRefresh = 'r'          " Recursively refresh the current directory
+let g:NERDTreeMapActivateNode = 'o'     " Open files, directories and bookmarks
+let g:NERDTreeMapPreview =  'go'        " Open selected file, but leave cursor in the NERDTree
+let g:NERDTreeMapOpenInTab = 't'        " Open selected node/bookmark in a new tab
+let g:NERDTreeMapOpenInTabSilent = 'T'  " Same as 't' but keep the focus on the current tab
+
