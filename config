@@ -1,7 +1,7 @@
 [core]
-    pager = delta
+	pager = delta
   	autocrlf = input
-	editor = nvim
+	editor = vim
 
 [interactive]
     diffFilter = delta --color-only --features=interactive
@@ -9,6 +9,8 @@
 [delta]
     features = decorations
     navigate = true
+    line-numbers = true
+    side-by-side = false
 
 [delta "interactive"]
     keep-plus-minus-markers = false
@@ -23,7 +25,7 @@
     hunk-header-style = file line-number syntax
 
 [merge]
-    conflictstyle = diff3
+      conflictStyle = zdiff3
 
 [commit]
 	gpgsign = true
@@ -47,3 +49,5 @@
 [user]
 	name = Bishal Thapa
 	email = bishal.thapa@trustly.com
+[alias]
+	staash = stash --all

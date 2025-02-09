@@ -1,25 +1,22 @@
 source ~/.vim/vimrc
 
-set idearefactormode=keep
+map <leader><leader> <S-:>
+" set trackactionids
+
+set idearefactormode=visual
 set ideajoin
+set NERDTree
 set surround
-" Show a few lines of context around the cursor. Note that this makes the
-" text scroll if you mouse-click near the start or end of the window.
-set scrolloff=5
-" Do incremental searching.
-set incsearch
-" Don't use Ex mode, use Q for formatting.
-map Q q
+set commentary
+set peekaboo
 
 "" Map \b to toggle the breakpoint on the current line
 map <leader>b <Action>(ToggleLineBreakpoint)
 
 map <leader>ff <Action>(SearchEverywhere)
-map <leader>fw <Action>(FindInPath)
+map <leader>fg <Action>(FindInPath)
 map gf <Action>(GotoDeclaration)
-nnoremap <silent> <Leader>m :action ActivateProjectToolWindow<CR>
 nnoremap <silent> <Leader>cm :action ClearBookmarks<CR>
-nnoremap <leader>o <Action>(FileStructurePopup)
 
 nnoremap m1 :action ToggleBookmark1<CR>
 nnoremap m2 :action ToggleBookmark2<CR>
@@ -38,12 +35,3 @@ nnoremap `b `B
 nnoremap `c `C
 nnoremap `d `D
 nnoremap `e `E
-
-
-set NERDTree # File Explorer
-noremap <leader>ef :NERDTree<CR>
-let g:NERDTreeMapActivateNode='l'
-let g:NERDTreeMapJumpParent='h'
-
-
-set highlightedyank # Highlight what you try to copy

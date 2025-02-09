@@ -22,23 +22,22 @@ nnoremap <leader>th :set hlsearch!<cr>
 " ----------------------------------------------------Toggle relative number with <leader>tr
 nnoremap <silent> <leader>tr :set relativenumber!<CR>
 
-"------------------------------------------ Split Horizontal by C+w _ and Vertical with C+w | 
-nnoremap <C-w>_ <C-w>s 
+"------------------------------------------ Split Horizontal by C+w _ and Vertical with C+w |
+nnoremap <C-w>_ <C-w>s
 nnoremap <C-w>\| <C-W>v
 
 " ----------------------------------- Use a line cursor within insert mode and a block cursor everywhere else.
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
-" ---------------------------------- Vim cursor shape configuration while opening and exiting 
+" ---------------------------------- Vim cursor shape configuration while opening and exiting
 let &t_ti .= "\e[2 q" " Block cursor
 let &t_te .= "\e[4 q" " Line cursor
-
 
 " ----------------------------------------------- Split border style
 highlight VertSplit cterm=none gui=none
 highlight LineNr ctermfg=grey
 
-" ---------------------------------------------------- Highlight horizontal and vertical split bar 
+" ---------------------------------------------------- Highlight horizontal and vertical split bar
 highlight VertSplit cterm=NONE ctermfg=19
 set cursorline
 set cursorlineopt=number
@@ -65,22 +64,45 @@ set t_Co=256                          " Set terminal color
 set textwidth=140
 set autowriteall
 set background=dark
-
 " -------------------- Open new split panes to right and bottom, which feels more natural than Vim’s default
 set splitbelow
 set splitright
 filetype plugin indent on
 
-autocmd! bufreadpost *.java set syntax=off
-
 
 " Define abbreviation for Java files
-autocmd FileType java :abbr sout System.out.println("");<Esc>3h2x
+autocmd FileType java :abbr sout System.out.println();<Esc>3h2x
+autocmd FileType kotlin :abbr pl println()<Esc>
 autocmd FileType java :abbr psvm public static void main(String[] args) {<CR>}<Esc>ko
 
-filetype plugin on
-autocmd Filetype java source ~/.vim/cursor_output-main/java/cursor_output.vim
-autocmd Filetype javascript source ~/.vim/cursor_output-main/javascript/cursor_output.vim
+"Disable syntax highlighting for Java and Kotlin files
+autocmd BufReadPost,BufEnter *.java syntax off
+autocmd BufReadPost,BufEnter *.kt syntax off
+autocmd BufReadPost,BufEnter *.kts syntax off
+
+" ------------------------------------------------------------ Status Line config
+ function! HasTrailingWhitespace()
+ 	if search('\s\+$', 'n', line('.') + 0, line('$')) > 0
+ 		return ' [trailing]'
+ 	else
+ 		return ''
+ 	endif
+ endfunction
+
+" " Clear status line when vimrc is reloaded.
+set statusline=
+set statusline+=%#LineNr#
+
+" " Use a divider to separate the left side from the right side.
+set statusline+=%=
+
+" " Status line right side.
+set statusline+=\ %m\ %M\ %y\ %{&fileencoding}\ %R
+set statusline+=\ %l\:%c\ [%p%%]
+set statusline+=%{HasTrailingWhitespace()}
+
+" " Show the status on the second to last line
+set laststatus=2
 
 " ----------------------------------------------------------------------------------------------------- Plugin
 "
@@ -95,14 +117,28 @@ call plug#begin()
   Plug 'preservim/nerdtree'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'junegunn/vim-peekaboo'
+  Plug 'vim-scripts/ReplaceWithRegister'
+  Plug 'dense-analysis/ale'
 call plug#end()
 
-" guard for distributions lacking the 'persistent_undo' feature.
-if has('persistent_undo')
-    let target_path = expand('~/.config/vim-persisted-undo/')
-    let &undodir = target_path
-    set undofile " finally, enable undo persistence.
+
+" -------------------------------------------------------------- vim-peekaboo
+let g:peekaboo_prefix = "<leader>"
+
+" -------------------------------------------------------------- undo-tree
+if has("persistent_undo")
+    let target_path = expand('~/.cache/vim-undo')
+    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(target_path)
+        call mkdir(target_path, "p", 0700)
+    endif
+    let &undodir=target_path
+    set undofile
 endif
+
+nnoremap <leader>uu :UndotreeToggle<CR>
+
 
 " -------------------------------------------------------------- vim-highlight-yank
 if !exists('##TextYankPost')
@@ -123,17 +159,15 @@ nnoremap <Leader>da :Lexplore<CR>
 
 " ---------------------------------------------------------------------------FZF
 noremap <leader>ff :Files<CR>
-noremap <Leader>fw :Rg 
-
+noremap <Leader>fg :Rg<CR>
 
 " -------------------------------------------------------------------------- NerdTree Mapping
-" maping source https://github.com/JetBrains/ideavim/blob/master/doc/NERDTree-support.md
-
 noremap <leader>m :NERDTreeToggle<CR>
-
+noremap <leader>ef :NERDTreeFind<CR>
+" maping source https://github.com/JetBrains/ideavim/blob/master/doc/NERDTree-support.md
 let g:NERDTreeMapQuit = 'q'             " Close the NERDTree window
-let g:NERDTreeMapNewFile = 'n'          " Create File 
-let g:NERDTreeMapNewDir = 'N'           " Create Directory 
+let g:NERDTreeMapNewFile = 'n'          " Create File
+let g:NERDTreeMapNewDir = 'N'           " Create Directory
 let g:NERDTreeMapDelete = 'd'           " Delete file or directory
 let g:NERDTreeMapRefreshRoot = 'R'      " Recursively refresh the current root
 let g:NERDTreeMapRefresh = 'r'          " Recursively refresh the current directory
@@ -141,4 +175,8 @@ let g:NERDTreeMapActivateNode = 'o'     " Open files, directories and bookmarks
 let g:NERDTreeMapPreview =  'go'        " Open selected file, but leave cursor in the NERDTree
 let g:NERDTreeMapOpenInTab = 't'        " Open selected node/bookmark in a new tab
 let g:NERDTreeMapOpenInTabSilent = 'T'  " Same as 't' but keep the focus on the current tab
+
+
+" hi TrailingWhitespace ctermbg=red guibg=red
+" call matchadd("TrailingWhitespace", '\v\s+$')
 
