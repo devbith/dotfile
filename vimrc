@@ -158,7 +158,17 @@ nnoremap <leader>dd :Lexplore %:p:h<CR>
 nnoremap <Leader>da :Lexplore<CR>
 
 " ---------------------------------------------------------------------------FZF
-noremap <leader>ff :Files<CR>
+
+function! s:FindFiles()
+  let l:current_dir = expand('%:p:h')
+  if system('git -C ' . shellescape(l:current_dir) . ' rev-parse --is-inside-work-tree 2>/dev/null') =~ 'true'
+    execute 'GitFiles'
+  else
+    execute 'Files'
+  endif
+endfunction
+
+nnoremap <leader>ff :call <SID>FindFiles()<CR>
 noremap <Leader>fg :Rg<CR>
 
 " -------------------------------------------------------------------------- NerdTree Mapping

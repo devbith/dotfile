@@ -120,3 +120,10 @@ export SDKMAN_DIR="$XDG_DATA_HOME/sdkman" && curl -s "https://get.sdkman.io" | b
 
 #### Install `zsh-syntax-highlighting `
  https://formulae.brew.sh/formula/zsh-syntax-highlighting
+
+### Git aliass 
+```
+alias.pushup=!git pull --rebase && git push
+alias.staash=stash --all
+alias.rebase-main=!git checkout main && git pull && git checkout - && git rebase main
+```

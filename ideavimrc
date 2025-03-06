@@ -3,7 +3,7 @@ source ~/.vim/vimrc
 map <leader><leader> <S-:>
 " set trackactionids
 
-set idearefactormode=visual
+" set idearefactormode=visual
 set ideajoin
 set NERDTree
 set surround
